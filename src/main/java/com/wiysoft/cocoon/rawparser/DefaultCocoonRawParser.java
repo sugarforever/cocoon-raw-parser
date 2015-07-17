@@ -12,6 +12,12 @@ import java.util.List;
  */
 public class DefaultCocoonRawParser implements CocoonRawParser {
 
+    private CocoonLineParser cocoonLineParser;
+
+    public void setCocoonLineParser(CocoonLineParser cocoonLineParser) {
+        this.cocoonLineParser = cocoonLineParser;
+    }
+
     @Override
     public List<Entry> parse(String raw) {
         List<Entry> entries = new ArrayList<Entry>();
@@ -19,7 +25,18 @@ public class DefaultCocoonRawParser implements CocoonRawParser {
             return entries;
         }
 
-        
+        if (this.cocoonLineParser == null) {
+            return entries;
+        }
+
+        String[] lines = raw.split(LINE_SEPARATOR);
+        for (String line : lines) {
+            Entry entry = this.cocoonLineParser.parse(line);
+            if (entry != null) {
+                entries.add(entry);
+            }
+        }
+
         return entries;
     }
 

@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface CocoonRawParser {
 
+    public static final String LINE_SEPARATOR = System.getProperty("line.separator");
+
     public List<Entry> parse(String raw);
 
 }

@@ -7,7 +7,9 @@ import java.util.Date;
  */
 public final class Entry {
 
-    private String code;
+    public static final String TYPE_BUY = "买盘";
+    public static final String TYPE_SELL = "卖盘";
+
     private Date date;
     private double price;
     private double change;
@@ -15,14 +17,6 @@ public final class Entry {
     private long volume;
     private long value;
     private String type;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public Date getDate() {
         return date;
