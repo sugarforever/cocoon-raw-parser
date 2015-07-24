@@ -1,5 +1,7 @@
 package com.wiysoft.cocoon.rawparser.model;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Date;
 
 /**
@@ -9,11 +11,12 @@ public final class Entry {
 
     public static final String TYPE_BUY = "买盘";
     public static final String TYPE_SELL = "卖盘";
+    public static final String TYPE_NEUTRAL = "中性盘";
 
     private Date date;
-    private double price;
-    private double change;
-    private double changePercentage;
+    private float price;
+    private float change;
+    private float changePercentage;
     private long volume;
     private long value;
     private String type;
@@ -26,27 +29,27 @@ public final class Entry {
         this.date = date;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public double getChange() {
+    public float getChange() {
         return change;
     }
 
-    public void setChange(double change) {
+    public void setChange(float change) {
         this.change = change;
     }
 
-    public double getChangePercentage() {
+    public float getChangePercentage() {
         return changePercentage;
     }
 
-    public void setChangePercentage(double changePercentage) {
+    public void setChangePercentage(float changePercentage) {
         this.changePercentage = changePercentage;
     }
 
@@ -71,6 +74,13 @@ public final class Entry {
     }
 
     public void setType(String type) {
-        this.type = type;
+        if (StringUtils.equals(type, TYPE_BUY))
+            this.type = "b";
+        else if (StringUtils.equals(type, TYPE_SELL))
+            this.type = "s";
+        else if (StringUtils.equals(type, TYPE_NEUTRAL))
+            this.type = "n";
+        else
+            this.type = "-";
     }
 }

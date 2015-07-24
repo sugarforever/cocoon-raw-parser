@@ -38,6 +38,20 @@ public final class Utilities {
         return d;
     }
 
+    public static Float parseFloat(String str, Float defaultValueWithException) {
+        Float f = null;
+        if (StringUtils.isNotEmpty(str)) {
+            try {
+                f = Float.parseFloat(str);
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                f = defaultValueWithException;
+            }
+        }
+
+        return f;
+    }
+
     public static Long parseLong(String str, Long defaultValueWithException) {
         Long l = null;
         if (StringUtils.isNotEmpty(str)) {

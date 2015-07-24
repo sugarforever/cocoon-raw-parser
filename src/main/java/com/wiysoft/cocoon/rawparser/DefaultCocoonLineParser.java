@@ -36,7 +36,7 @@ public class DefaultCocoonLineParser implements CocoonLineParser {
             }
 
             String strPrice = fields[1];
-            Double price = Utilities.parseDouble(strPrice, null);
+            Float price = Utilities.parseFloat(strPrice, null);
             if (price == null) {
                 return null;
             } else {
@@ -44,7 +44,7 @@ public class DefaultCocoonLineParser implements CocoonLineParser {
             }
 
             String strChange = fields[2];
-            Double change = Utilities.parseDouble(strChange, 0.0);
+            Float change = Utilities.parseFloat(strChange, 0.0f);
             if (change == null) {
                 return null;
             } else {
